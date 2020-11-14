@@ -1,0 +1,3 @@
+token: "${ token }"
+
+server: "https://${ server }:6443"

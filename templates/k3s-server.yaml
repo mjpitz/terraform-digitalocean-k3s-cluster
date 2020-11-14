@@ -1,0 +1,14 @@
+token: "${ token }"
+
+%{ if init }
+cluster-init: 1
+tls-san:
+ - ${ server }
+%{ else }
+server: "https://${ server }:6443"
+%{ endif }
+
+disable:
+ - servicelb
+ - traefik
+ - local-storage
