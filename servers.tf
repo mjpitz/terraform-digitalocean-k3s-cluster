@@ -74,10 +74,10 @@ resource "null_resource" "server_startup" {
     destination = "/etc/rancher/k3s/config.yaml"
     content = templatefile("${path.module}/templates/k3s-server.yaml", {
       token = random_string.token.result,
-      init = (count.index == 0),
-      server = (count.index == 0 ?
-              digitalocean_loadbalancer.server.ip :
-              digitalocean_droplet.servers[0].ipv4_address),
+      index = count.index,
+      count = var.server.count,
+      server = digitalocean_droplet.servers[0].ipv4_address,
+      tls_san = digitalocean_loadbalancer.server.ip,
     })
   }
 

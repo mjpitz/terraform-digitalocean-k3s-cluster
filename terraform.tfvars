@@ -3,7 +3,7 @@ region = "sfo3"
 cidrBlock = "10.64.0.0/16"
 
 server = {
-  count = 3
+  count = 1
   image = "ubuntu-20-04-x64"
   size = "s-2vcpu-4gb"
   backups = false

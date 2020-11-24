@@ -1,9 +1,12 @@
 token: "${ token }"
 
-%{ if init }
+%{ if count > 1 }
 cluster-init: 1
+%{ endif }
+
+%{ if index == 0 }
 tls-san:
- - ${ server }
+ - ${ tls_san }
 %{ else }
 server: "https://${ server }:6443"
 %{ endif }
